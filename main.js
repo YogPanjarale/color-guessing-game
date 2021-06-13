@@ -47,10 +47,12 @@ class Value {
 class Item {
 	/**
 	 * @param {Element} element The element
+	 * @param {number} index The index in array
 	 */
-	constructor(element) {
+	constructor(element,index) {
 		this.element = element;
-    this.element.onclick = ()=>console.log("Button clicked")
+    this.index= index
+    this.element.onclick = ()=>checkResult(this)
 	}
 	/**
 	 * @param {number} r red value
@@ -75,14 +77,22 @@ let rightOne=100;
  */
 const items = [];
 document.querySelectorAll(".items .item").forEach((value, key) => {
-	items.push(new Item(value));
+	items.push(new Item(value,key));
 });
 
 console.log("Hello World 🚀");
 
+function checkResult(item) {
+    if(item.index === rightOne ){
+      alert("You Won")
+    }else{
+      console.log(item.index,rightOne)
+      showSnackBar("Try Again")
+    }
+}
 function generateRandomColor(difficulty = 1) {
 	if (difficulty <= 1) {
-		const [r, g, b] = [0, 0, 0].map((a) => Math.floor(Math.random() * 255));
+		const [r, g, b] = [0, 0, 0].map(() => Math.floor(Math.random() * 255));
 		R.value = r;
 		G.value = g;
 		B.value = b;

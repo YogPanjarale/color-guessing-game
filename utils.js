@@ -1,13 +1,32 @@
 /**
- * Function to generate random number  
+ * Function to generate random number
  * @param {number} min minimum number
  * @param {number} max max number
  * @returns {number}
  */
-function randomNumber(min, max) {  
-    return Math.floor(Math.random() * (max - min) + min); 
-}  
-  
+function randomNumber(min, max) {
+	return Math.floor(Math.random() * (max - min) + min);
+}
+
+function showSnackBar(text) {
+    // Get the snackbar DIV
+	let x = document.getElementById("snackbar");
+    if (x.classList.contains("show")){
+        x.className = x.className.replace("show", "");
+        x.innerHTML=""
+    }
+
+	// Add the "show" class to DIV
+	x.className = "show";
+
+    //setting the text
+    x.innerHTML=text
+	// After 3 seconds, remove the show class from DIV
+	setTimeout(function () {
+		x.className = x.className.replace("show", "");
+        x.innerHTML=""
+	}, 3000);
+}
 
 /**
  * Converts an RGB color value to HSL. Conversion formula
