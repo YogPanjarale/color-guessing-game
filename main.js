@@ -17,15 +17,15 @@ class Value {
 		const mode = this.selector.replace(".", "").toLowerCase();
 		switch (mode) {
 			case "r":
-				this.setColor(value, 0, 0);
+				this.setColor(255, 0, 0);
 				break;
 
 			case "g":
-				this.setColor(0, value, 0);
+				this.setColor(0, 255, 0);
 				break;
 
 			case "b":
-				this.setColor(0, 0, value);
+				this.setColor(0, 0, 255);
 				break;
 
 			default:
