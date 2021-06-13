@@ -82,14 +82,22 @@ document.querySelectorAll(".items .item").forEach((value, key) => {
 
 console.log("Hello World 🚀");
 
+/**
+ * @param {Item} item
+ */
 function checkResult(item) {
     if(item.index === rightOne ){
+      item.element.classList.add("correct")
+      document.querySelector("#reload").classList.add("done")
       alert("You Won")
+      setTimeout(()=>location.reload(),5000)
+
     }else{
       console.log(item.index,rightOne)
       showSnackBar("Try Again")
     }
 }
+window.onload=()=>generateRandomColor()
 function generateRandomColor(difficulty = 1) {
 	if (difficulty <= 1) {
 		const [r, g, b] = [0, 0, 0].map(() => Math.floor(Math.random() * 255));
@@ -99,6 +107,7 @@ function generateRandomColor(difficulty = 1) {
     rightOne = Math.floor(Math.random() * items.length)
     console.log(rightOne)
     items.forEach((item,idx)=>{
+      item.element.classList.remove("correct")
       if (idx==rightOne){
         return item.setColor(r,g,b)}
       else{
